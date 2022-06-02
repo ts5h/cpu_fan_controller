@@ -2,14 +2,14 @@
 // AMD Wraith Prism
 
 const unsigned int ANALOG_RATE_INPUT = A0;
-const unsigned int ANALOG_RATE_OUTPUT = A6;
+const unsigned int ANALOG_RATE_OUTPUT = 3;
 
 const unsigned int ANALOG_R_INPUT = A1;
 const unsigned int ANALOG_G_INPUT = A2;
 const unsigned int ANALOG_B_INPUT = A3;
-const unsigned int ANALOG_R_OUTPUT = A7;
-const unsigned int ANALOG_G_OUTPUT = A8;
-const unsigned int ANALOG_B_OUTPUT = A9;
+const unsigned int ANALOG_R_OUTPUT = 5;
+const unsigned int ANALOG_G_OUTPUT = 6;
+const unsigned int ANALOG_B_OUTPUT = 9;
 
 unsigned int rate = 0;
 unsigned int red = 0;
@@ -48,10 +48,10 @@ void loop() {
     delay(averageCycle);
   }
 
-  rate = rate / averageNum / 4;
-  red = red / averageNum / 4;
-  green = green / averageNum / 4;
-  blue = blue / averageNum / 4;
+  rate = rate / averageNum;
+  red = red / averageNum;
+  green = green / averageNum;
+  blue = blue / averageNum;
 
   Serial.println(rate);
 
