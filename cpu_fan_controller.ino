@@ -30,7 +30,7 @@ void setup() {
   pinMode(ANALOG_G_OUTPUT, OUTPUT);
   pinMode(ANALOG_B_OUTPUT, OUTPUT);
 
-  Serial.begin(9600);
+  // Serial.begin(9600);
 }
 
 void loop() {
@@ -53,10 +53,10 @@ void loop() {
   green = green / averageNum;
   blue = blue / averageNum;
 
-  Serial.println(rate);
-
   analogWrite(ANALOG_RATE_OUTPUT, rate);
   analogWrite(ANALOG_R_OUTPUT, red);
   analogWrite(ANALOG_G_OUTPUT, green);
   analogWrite(ANALOG_B_OUTPUT, blue);
+
+  Serial.println(red);
 }
