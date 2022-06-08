@@ -11,14 +11,6 @@ const unsigned int ANALOG_R_OUTPUT = 5;
 const unsigned int ANALOG_G_OUTPUT = 6;
 const unsigned int ANALOG_B_OUTPUT = 9;
 
-unsigned int rate = 0;
-unsigned int red = 0;
-unsigned int green = 0;
-unsigned int blue = 0;
-
-unsigned int averageNum = 10;
-unsigned int averageCycle = 10;
-
 void setup() {
   pinMode(ANALOG_RATE_INPUT, INPUT);
   pinMode(ANALOG_RATE_OUTPUT, OUTPUT);
@@ -33,12 +25,22 @@ void setup() {
   Serial.begin(9600);
 }
 
+
+unsigned int rate = 0;
+unsigned int red = 0;
+unsigned int green = 0;
+unsigned int blue = 0;
+
+unsigned int averageNum = 10;
+unsigned int averageCycle = 10;
+
 void loop() {
   rate = 0;
   red = 0;
   green = 0;
   blue = 0;
 
+  // delay = averageNum * averageCycle
   for (unsigned int i = 0; i < averageNum; i++) {
     rate += analogRead(ANALOG_RATE_INPUT);
     red += analogRead(ANALOG_R_INPUT);
