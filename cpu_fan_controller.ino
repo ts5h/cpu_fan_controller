@@ -23,40 +23,41 @@ void setup() {
   pinMode(ANALOG_RATE_INPUT, INPUT);
   pinMode(ANALOG_RATE_OUTPUT, OUTPUT);
 
-  // pinMode(ANALOG_R_INPUT, INPUT);
-  // pinMode(ANALOG_G_INPUT, INPUT);
-  // pinMode(ANALOG_B_INPUT, INPUT);
-  // pinMode(ANALOG_R_OUTPUT, OUTPUT);
-  // pinMode(ANALOG_G_OUTPUT, OUTPUT);
-  // pinMode(ANALOG_B_OUTPUT, OUTPUT);
+  pinMode(ANALOG_R_INPUT, INPUT);
+  pinMode(ANALOG_G_INPUT, INPUT);
+  pinMode(ANALOG_B_INPUT, INPUT);
+  pinMode(ANALOG_R_OUTPUT, OUTPUT);
+  pinMode(ANALOG_G_OUTPUT, OUTPUT);
+  pinMode(ANALOG_B_OUTPUT, OUTPUT);
 
-  Serial.begin(9600);
+  // Serial.begin(9600);
 }
 
 void loop() {
+  unsigned int i = 0;
   rate = 0;
   red = 0;
   green = 0;
   blue = 0;
 
-  for (int i = 0; i < averageNum; i++) {
+  for (i = 0; i < averageNum; i++) {
     rate += analogRead(ANALOG_RATE_INPUT);
-    // red += analogRead(ANALOG_R_INPUT);
-    // green += analogRead(ANALOG_G_INPUT);
-    // blue += analogRead(ANALOG_B_INPUT);
+    red += analogRead(ANALOG_R_INPUT);
+    green += analogRead(ANALOG_G_INPUT);
+    blue += analogRead(ANALOG_B_INPUT);
 
     delay(averageCycle);
   }
 
   rate = rate / averageNum / 4;
-  // red = red / averageNum;
-  // green = green / averageNum;
-  // blue = blue / averageNum;
+  red = red / averageNum / 4;
+  green = green / averageNum / 4;
+  blue = blue / averageNum / 4;
 
   analogWrite(ANALOG_RATE_OUTPUT, rate);
-  // analogWrite(ANALOG_R_OUTPUT, red);
-  // analogWrite(ANALOG_G_OUTPUT, green);
-  // analogWrite(ANALOG_B_OUTPUT, blue);
+  analogWrite(ANALOG_R_OUTPUT, red);
+  analogWrite(ANALOG_G_OUTPUT, green);
+  analogWrite(ANALOG_B_OUTPUT, blue);
 
-  Serial.println(rate);
+  // Serial.println(rate);
 }
