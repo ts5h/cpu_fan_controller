@@ -2,7 +2,7 @@
 // AMD Wraith Prism
 
 const unsigned int ANALOG_RATE_INPUT = A0;
-const unsigned int ANALOG_RATE_OUTPUT = 3;
+const unsigned int ANALOG_RATE_OUTPUT = 10;
 
 const unsigned int ANALOG_R_INPUT = A1;
 const unsigned int ANALOG_G_INPUT = A2;
@@ -23,12 +23,12 @@ void setup() {
   pinMode(ANALOG_RATE_INPUT, INPUT);
   pinMode(ANALOG_RATE_OUTPUT, OUTPUT);
 
-  pinMode(ANALOG_R_INPUT, INPUT);
-  pinMode(ANALOG_G_INPUT, INPUT);
-  pinMode(ANALOG_B_INPUT, INPUT);
-  pinMode(ANALOG_R_OUTPUT, OUTPUT);
-  pinMode(ANALOG_G_OUTPUT, OUTPUT);
-  pinMode(ANALOG_B_OUTPUT, OUTPUT);
+  // pinMode(ANALOG_R_INPUT, INPUT);
+  // pinMode(ANALOG_G_INPUT, INPUT);
+  // pinMode(ANALOG_B_INPUT, INPUT);
+  // pinMode(ANALOG_R_OUTPUT, OUTPUT);
+  // pinMode(ANALOG_G_OUTPUT, OUTPUT);
+  // pinMode(ANALOG_B_OUTPUT, OUTPUT);
 
   // Serial.begin(9600);
 }
@@ -41,22 +41,22 @@ void loop() {
 
   for (int i = 0; i < averageNum; i++) {
     rate += analogRead(ANALOG_RATE_INPUT);
-    red += analogRead(ANALOG_R_INPUT);
-    green += analogRead(ANALOG_G_INPUT);
-    blue += analogRead(ANALOG_B_INPUT);
+    // red += analogRead(ANALOG_R_INPUT);
+    // green += analogRead(ANALOG_G_INPUT);
+    // blue += analogRead(ANALOG_B_INPUT);
 
     delay(averageCycle);
   }
 
   rate = rate / averageNum;
-  red = red / averageNum;
-  green = green / averageNum;
-  blue = blue / averageNum;
+  // red = red / averageNum;
+  // green = green / averageNum;
+  // blue = blue / averageNum;
 
   analogWrite(ANALOG_RATE_OUTPUT, rate);
-  analogWrite(ANALOG_R_OUTPUT, red);
-  analogWrite(ANALOG_G_OUTPUT, green);
-  analogWrite(ANALOG_B_OUTPUT, blue);
+  // analogWrite(ANALOG_R_OUTPUT, red);
+  // analogWrite(ANALOG_G_OUTPUT, green);
+  // analogWrite(ANALOG_B_OUTPUT, blue);
 
   Serial.println(red);
 }
