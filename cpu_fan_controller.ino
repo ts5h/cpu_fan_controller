@@ -1,4 +1,4 @@
-// CPU Fan Control 
+// CPU Fan Control
 // from Pro micro to AMD Wraith Prism
 
 const unsigned int ANALOG_RATE_INPUT = A0;
@@ -16,6 +16,9 @@ unsigned int red = 0;
 unsigned int green = 0;
 unsigned int blue = 0;
 
+unsigned int averageNum = 10;
+unsigned int averageCycle = 10;
+
 void setup() {
   pinMode(ANALOG_RATE_INPUT, INPUT);
   pinMode(ANALOG_RATE_OUTPUT, OUTPUT);
@@ -27,37 +30,33 @@ void setup() {
   pinMode(ANALOG_G_OUTPUT, OUTPUT);
   pinMode(ANALOG_B_OUTPUT, OUTPUT);
 
-  // Serial.begin(9600);
+  Serial.begin(9600);
 }
 
-
-unsigned int averageNum = 100;
-unsigned int count = 0;
-
 void loop() {
-  if (count >= averageNum) {
-    rate = rate / averageNum / 4;
-    red = red / averageNum / 4;
-    green = green / averageNum / 4;
-    blue = blue / averageNum / 4;
-    
-    analogWrite(ANALOG_RATE_OUTPUT, rate);
-    analogWrite(ANALOG_R_OUTPUT, red);
-    analogWrite(ANALOG_G_OUTPUT, green);
-    analogWrite(ANALOG_B_OUTPUT, blue);
+  rate = 0;
+  red = 0;
+  green = 0;
+  blue = 0;
 
-    rate = 0;
-    red = 0;
-    green = 0;
-    blue = 0;
-    count = 0;
-
-    // Serial.println(rate);
-  } else {
+  for (unsigned int i = 0; i < averageNum; i++) {
     rate += analogRead(ANALOG_RATE_INPUT);
     red += analogRead(ANALOG_R_INPUT);
     green += analogRead(ANALOG_G_INPUT);
     blue += analogRead(ANALOG_B_INPUT);
-    count++;
+
+    delay(averageCycle);
   }
+
+  rate = rate / averageNum / 4;
+  red = red / averageNum / 4;
+  green = green / averageNum / 4;
+  blue = blue / averageNum / 4;
+
+  analogWrite(ANALOG_RATE_OUTPUT, rate);
+  analogWrite(ANALOG_R_OUTPUT, red);
+  analogWrite(ANALOG_G_OUTPUT, green);
+  analogWrite(ANALOG_B_OUTPUT, blue);
+
+  Serial.println(rate);
 }
