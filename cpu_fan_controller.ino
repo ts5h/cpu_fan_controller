@@ -22,7 +22,7 @@ void setup() {
   pinMode(ANALOG_G_OUTPUT, OUTPUT);
   pinMode(ANALOG_B_OUTPUT, OUTPUT);
 
-  Serial.begin(9600);
+  // Serial.begin(9600);
 }
 
 
@@ -60,5 +60,5 @@ void loop() {
   analogWrite(ANALOG_G_OUTPUT, green);
   analogWrite(ANALOG_B_OUTPUT, blue);
 
-  Serial.println(rate);
+  // Serial.println(rate);
 }
