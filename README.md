@@ -1,2 +1,2 @@
 # cpu_fan_controller (WIP)
-CPU Fan Controlling using Pro Micro
+CPU Fan Controlling for AMD Wraith Prism ARGB from Pro Micro
