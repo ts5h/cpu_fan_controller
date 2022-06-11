@@ -1,6 +1,0 @@
-{
-    "configuration": "cpu=16MHzatmega32U4",
-    "board": "SparkFun:avr:promicro",
-    "port": "COM3",
-    "sketch": "cpu_fan_controller.ino"
-}
