@@ -1,2 +1,2 @@
 # cpu_fan_controller
-CPU Fan Controller for Pro Micro
+CPU Fan Controlling using Pro Micro
