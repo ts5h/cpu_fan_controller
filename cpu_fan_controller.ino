@@ -2,14 +2,14 @@
 // from Pro micro to AMD Wraith Prism
 
 const unsigned int ANALOG_RATE_INPUT = A0;
-const unsigned int ANALOG_RATE_OUTPUT = 10;
+const byte ANALOG_RATE_OUTPUT = 9;
 
 const unsigned int ANALOG_R_INPUT = A1;
 const unsigned int ANALOG_G_INPUT = A2;
 const unsigned int ANALOG_B_INPUT = A3;
-const unsigned int ANALOG_R_OUTPUT = 5;
-const unsigned int ANALOG_G_OUTPUT = 6;
-const unsigned int ANALOG_B_OUTPUT = 9;
+const unsigned int ANALOG_R_OUTPUT = 3;
+const unsigned int ANALOG_G_OUTPUT = 5;
+const unsigned int ANALOG_B_OUTPUT = 6;
 
 void setup() {
   pinMode(ANALOG_RATE_INPUT, INPUT);
@@ -35,13 +35,15 @@ unsigned int averageNum = 10;
 unsigned int averageCycle = 10;
 
 void loop() {
-  rate = 0;
-  red = 0;
-  green = 0;
-  blue = 0;
-
   // delay = averageNum * averageCycle
   for (unsigned int i = 0; i < averageNum; i++) {
+    if (i == 0) {
+      rate = 0;
+      red = 0;
+      green = 0;
+      blue = 0;
+    }
+    
     rate += analogRead(ANALOG_RATE_INPUT);
     red += analogRead(ANALOG_R_INPUT);
     green += analogRead(ANALOG_G_INPUT);
