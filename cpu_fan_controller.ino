@@ -22,7 +22,7 @@ void setup() {
   pinMode(ANALOG_G_OUTPUT, OUTPUT);
   pinMode(ANALOG_B_OUTPUT, OUTPUT);
 
-  // Serial.begin(9600);
+  Serial.begin(9600);
 }
 
 
@@ -53,9 +53,9 @@ void loop() {
   }
 
   rate = rate / averageNum / 4;
-  red = red / averageNum / 4;
-  green = green / averageNum / 4;
-  blue = blue / averageNum / 4;
+  red = 255 - red / averageNum / 4;
+  green = 255 - green / averageNum / 4;
+  blue = 255 - blue / averageNum / 4;
 
   analogWrite(ANALOG_RATE_OUTPUT, rate);
   analogWrite(ANALOG_R_OUTPUT, red);
