@@ -2,7 +2,7 @@
 // from Pro micro to AMD Wraith Prism
 
 const unsigned int ANALOG_RATE_INPUT = A0;
-const byte ANALOG_RATE_OUTPUT = 9;
+const unsigned int ANALOG_RATE_OUTPUT = 9;
 
 const unsigned int ANALOG_R_INPUT = A1;
 const unsigned int ANALOG_G_INPUT = A2;
